@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><parameters><parameter>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><parameters><parameter>
     <key/>
     <name>mavenRepositoryURL</name>
     <type>xsd:string</type>
