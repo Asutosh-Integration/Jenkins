@@ -94,6 +94,8 @@ pipeline {
                     fileOperations([fileDeleteOperation(excludes: '', includes: filename)])
 
                     dir(env.GITFolder) {
+                        sh 'git config user.email "asutoshmaharana23@gmail.com"'
+                        sh 'git config user.name "Asutosh Maharana"'
                         sh 'git add .'
                     }
                     println('Store integration artefact in Git')
