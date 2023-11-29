@@ -52,7 +52,7 @@ public class DeployEventHandler implements EventHandler {
             //Build event information
             def evntMsg = []
             try {
-                evntMsg = event.toString();
+                evntMsg = [topic:event.getTopic(), bundleName:event.getProperty("bundle").getSymbolicName(), TimeStamp:event.getProperty("timestamp")]
                 def bundle = event.getProperty("bundle").getSymbolicName();
                 def pattern = ~/^Test_[a-fA-F0-9]{32}$/
                 if (!(bundle ==~ pattern)) {
@@ -71,8 +71,9 @@ public class DeployEventHandler implements EventHandler {
                     }
                 }
             }catch (Exception e){
-                if (!(e instanceof com.sap.it.api.asdk.exception.DataStoreException && 
-                        e.message.contains("An entry with id explorer does already exist in data store"))){
+                def pattern = ~/An entry with id \w+ does already exist in data store \w+/
+                if (!(e instanceof com.sap.it.api.asdk.exception.DataStoreException &&
+                        e.message ==~ pattern)){
                     evntMsg = e.toString();
                     def service = new Factory(DataStoreService.class).getService()
                     //Check if valid service instance was retrieved

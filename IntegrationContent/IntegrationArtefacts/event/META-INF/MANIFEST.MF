@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 SAP-RuntimeProfile: iflmap
 Bundle-SymbolicName: event; singleton:=true
 Bundle-Name: event
-Bundle-Version: 1.0.3
+Bundle-Version: 1.0.5
 Bundle-ManifestVersion: 2
 Origin-Bundle-SymbolicName: event
 SAP-NodeType: IFLMAP
