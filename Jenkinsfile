@@ -108,6 +108,7 @@ pipeline {
                         while (attempt <= maxAttempts && !pushSuccess) {
                             try {
                             // Attempt the push
+                                sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                                 sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                                 pushSuccess = true
                             } catch (Exception pushError) {
