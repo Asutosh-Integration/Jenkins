@@ -23,7 +23,6 @@ pipeline {
             steps {
                 deleteDir()
                 script {
-                    lock('GitLock'){
                         //clone repo
                     checkout([
                         $class: 'GitSCM',
@@ -102,8 +101,8 @@ pipeline {
                     println('Store integration artefact in Git')
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {
                         sh 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
+                        sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                         sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
-                    }
                     }
                     
                 }
