@@ -101,34 +101,8 @@ pipeline {
                     println('Store integration artefact in Git')
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {
                         sh 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
-                        
                         sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
-                        def conflictDetected = false
-                        def rebaseAttempts = 0
-
-                        while (!conflictDetected && rebaseAttempts < 3) {
-                            // Rebase your changes on top of the updated remote branch
-                            sh('git rebase https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
-                        
-                            // Check if there were conflicts during rebase
-                            def hasConflicts = sh(script: 'git diff --name-only --diff-filter=U', returnStatus: true) == 0
-
-                            if (hasConflicts) {
-                                echo 'Conflicts occurred during rebase. Resolving conflicts...'
-                                // Handle conflicts: resolve them manually and continue the rebase
-                                sh 'git rebase --continue'
-                                rebaseAttempts++
-                            } else {
-                                conflictDetected = false
-                            }
-                        }
-
-                        if (conflictDetected) {
-                            echo 'Conflict resolution attempts reached the limit. Manual intervention required.'
-                        } else {
-                            // Push the rebased changes to the remote repository
-                            sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
-                        }
+                        sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                     }
                     
                 }
