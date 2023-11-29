@@ -23,7 +23,8 @@ pipeline {
             steps {
                 deleteDir()
                 script {
-                    //clone repo
+                    lock('GitLock'){
+                        //clone repo
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: env.GITBranch]],
@@ -103,6 +104,8 @@ pipeline {
                         sh 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
                         sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                     }
+                    }
+                    
                 }
             }
         }
