@@ -101,8 +101,27 @@ pipeline {
                     println('Store integration artefact in Git')
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {
                         sh 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
-                        sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
-                        sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+                        def maxAttempts = 3
+                        def attempt = 1
+                        boolean pushSuccess = false
+
+                        while (attempt <= maxAttempts && !pushSuccess) {
+                            try {
+                            // Attempt the push
+                                sh('git push https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+                                pushSuccess = true
+                            } catch (Exception pushError) {
+                                echo "Push attempt ${attempt} failed with an error: ${pushError}"
+                            // Pull changes from the remote repository
+                                sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+                            }
+                            attempt++
+                        }
+
+                        if (!pushSuccess) {
+                            echo "Push failed after ${maxAttempts} attempts. Manual intervention required."
+                        }
+                        
                     }
                     
                 }
