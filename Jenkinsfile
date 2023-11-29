@@ -114,7 +114,7 @@ pipeline {
                             } catch (Exception pushError) {
                                 echo "Push attempt ${attempt} failed with an error: ${pushError}"
                             // Pull changes from the remote repository
-                                sh('git pull https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+                                sh('git pull --rebase https://${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
                             }
                             attempt++
                         }
