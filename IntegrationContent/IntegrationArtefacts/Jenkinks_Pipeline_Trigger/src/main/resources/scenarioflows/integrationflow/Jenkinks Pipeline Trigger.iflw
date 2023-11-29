@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1">
     <bpmn2:collaboration id="Collaboration_1" name="Default Collaboration">
-        <bpmn2:documentation id="Documentation_1701244360889" textFormat="text/plain">Jenkins pipeline trigger using generic WebHook call.</bpmn2:documentation>
+        <bpmn2:documentation id="Documentation_1701264076925" textFormat="text/plain">Jenkins pipeline trigger using generic WebHook call.</bpmn2:documentation>
         <bpmn2:extensionElements>
             <ifl:property>
                 <key>namespaceMapping</key>
@@ -86,94 +86,6 @@
         <bpmn2:participant id="Participant_Process_1" ifl:type="IntegrationProcess" name="Integration Process" processRef="Process_1">
             <bpmn2:extensionElements/>
         </bpmn2:participant>
-        <bpmn2:messageFlow id="MessageFlow_4" name="DataStore" sourceRef="Participant_1" targetRef="StartEvent_2">
-            <bpmn2:extensionElements>
-                <ifl:property>
-                    <key>ComponentType</key>
-                    <value>DataStoreConsumer</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>Description</key>
-                    <value/>
-                </ifl:property>
-                <ifl:property>
-                    <key>visibility</key>
-                    <value>global</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>MaxRetryInterval</key>
-                    <value>60</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>ComponentNS</key>
-                    <value>sap</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>componentVersion</key>
-                    <value>1.0</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>ExponentialBackoff</key>
-                    <value>1</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>Name</key>
-                    <value>DataStore</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>storageName</key>
-                    <value>osgiEvents</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>TransportProtocolVersion</key>
-                    <value>1.0.0</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>ComponentSWCVName</key>
-                    <value>external</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>system</key>
-                    <value>Sender</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>TransportProtocol</key>
-                    <value>JDBC</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>PollDelay</key>
-                    <value>10</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>RetryInterval</key>
-                    <value>1</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:DataStoreConsumer/tp::JDBC/mp::None/direction::Sender/version::1.0.0</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>MessageProtocol</key>
-                    <value>None</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>MessageProtocolVersion</key>
-                    <value>1.0.0</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>ComponentSWCVId</key>
-                    <value>1.0.0</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>file_lock_timeout</key>
-                    <value>10</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>direction</key>
-                    <value>Sender</value>
-                </ifl:property>
-            </bpmn2:extensionElements>
-        </bpmn2:messageFlow>
         <bpmn2:messageFlow id="MessageFlow_8" name="HTTP" sourceRef="EndEvent_2" targetRef="Participant_2">
             <bpmn2:extensionElements>
                 <ifl:property>
@@ -318,6 +230,94 @@
                 </ifl:property>
             </bpmn2:extensionElements>
         </bpmn2:messageFlow>
+        <bpmn2:messageFlow id="MessageFlow_4" name="DataStore" sourceRef="Participant_1" targetRef="StartEvent_2">
+            <bpmn2:extensionElements>
+                <ifl:property>
+                    <key>ComponentType</key>
+                    <value>DataStoreConsumer</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>Description</key>
+                    <value/>
+                </ifl:property>
+                <ifl:property>
+                    <key>visibility</key>
+                    <value>global</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>MaxRetryInterval</key>
+                    <value>60</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>ComponentNS</key>
+                    <value>sap</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>componentVersion</key>
+                    <value>1.0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>ExponentialBackoff</key>
+                    <value>1</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>Name</key>
+                    <value>DataStore</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>storageName</key>
+                    <value>osgiEvents</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>TransportProtocolVersion</key>
+                    <value>1.0.0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>ComponentSWCVName</key>
+                    <value>external</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>system</key>
+                    <value>Sender</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>TransportProtocol</key>
+                    <value>JDBC</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>PollDelay</key>
+                    <value>10</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>RetryInterval</key>
+                    <value>1</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>cmdVariantUri</key>
+                    <value>ctype::AdapterVariant/cname::sap:DataStoreConsumer/tp::JDBC/mp::None/direction::Sender/version::1.0.0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>MessageProtocol</key>
+                    <value>None</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>MessageProtocolVersion</key>
+                    <value>1.0.0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>ComponentSWCVId</key>
+                    <value>1.0.0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>file_lock_timeout</key>
+                    <value>10</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>direction</key>
+                    <value>Sender</value>
+                </ifl:property>
+            </bpmn2:extensionElements>
+        </bpmn2:messageFlow>
     </bpmn2:collaboration>
     <bpmn2:process id="Process_1" name="Integration Process">
         <bpmn2:extensionElements>
@@ -338,7 +338,7 @@
                 <value>Not Required</value>
             </ifl:property>
         </bpmn2:extensionElements>
-        <bpmn2:callActivity id="CallActivity_5" name="Groovy Script 1">
+        <bpmn2:callActivity id="CallActivity_5" name="Add headers">
             <bpmn2:extensionElements>
                 <ifl:property>
                     <key>scriptFunction</key>
@@ -411,6 +411,9 @@
             <bpmndi:BPMNShape bpmnElement="StartEvent_2" id="BPMNShape_StartEvent_2">
                 <dc:Bounds height="32.0" width="32.0" x="292.0" y="142.0"/>
             </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="CallActivity_5" id="BPMNShape_CallActivity_5">
+                <dc:Bounds height="60.0" width="100.0" x="363.0" y="128.0"/>
+            </bpmndi:BPMNShape>
             <bpmndi:BPMNShape bpmnElement="Participant_2" id="BPMNShape_Participant_2">
                 <dc:Bounds height="140.0" width="100.0" x="695.0" y="104.0"/>
             </bpmndi:BPMNShape>
@@ -420,24 +423,21 @@
             <bpmndi:BPMNShape bpmnElement="Participant_Process_1" id="BPMNShape_Participant_Process_1">
                 <dc:Bounds height="220.0" width="392.0" x="250.0" y="60.0"/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape bpmnElement="CallActivity_5" id="BPMNShape_CallActivity_5">
-                <dc:Bounds height="60.0" width="100.0" x="363.0" y="128.0"/>
-            </bpmndi:BPMNShape>
-            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="BPMNEdge_SequenceFlow_3" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_CallActivity_5">
-                <di:waypoint x="308.0" xsi:type="dc:Point" y="158.0"/>
-                <di:waypoint x="413.0" xsi:type="dc:Point" y="158.0"/>
-            </bpmndi:BPMNEdge>
-            <bpmndi:BPMNEdge bpmnElement="MessageFlow_4" id="BPMNEdge_MessageFlow_4" sourceElement="BPMNShape_Participant_1" targetElement="BPMNShape_StartEvent_2">
-                <di:waypoint x="90.0" xsi:type="dc:Point" y="170.0"/>
-                <di:waypoint x="308.0" xsi:type="dc:Point" y="158.0"/>
-            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="SequenceFlow_6" id="BPMNEdge_SequenceFlow_6" sourceElement="BPMNShape_CallActivity_5" targetElement="BPMNShape_EndEvent_2">
                 <di:waypoint x="413.0" xsi:type="dc:Point" y="158.0"/>
                 <di:waypoint x="542.0" xsi:type="dc:Point" y="158.0"/>
             </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="BPMNEdge_SequenceFlow_3" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_CallActivity_5">
+                <di:waypoint x="308.0" xsi:type="dc:Point" y="158.0"/>
+                <di:waypoint x="413.0" xsi:type="dc:Point" y="158.0"/>
+            </bpmndi:BPMNEdge>
             <bpmndi:BPMNEdge bpmnElement="MessageFlow_8" id="BPMNEdge_MessageFlow_8" sourceElement="BPMNShape_EndEvent_2" targetElement="BPMNShape_Participant_2">
                 <di:waypoint x="542.0" xsi:type="dc:Point" y="158.0"/>
                 <di:waypoint x="745.0" xsi:type="dc:Point" y="174.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MessageFlow_4" id="BPMNEdge_MessageFlow_4" sourceElement="BPMNShape_Participant_1" targetElement="BPMNShape_StartEvent_2">
+                <di:waypoint x="90.0" xsi:type="dc:Point" y="170.0"/>
+                <di:waypoint x="308.0" xsi:type="dc:Point" y="158.0"/>
             </bpmndi:BPMNEdge>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 SAP-RuntimeProfile: iflmap
 Bundle-SymbolicName: Jenkinks_Pipeline_Trigger; singleton:=true
 Bundle-Name: Jenkinks Pipeline Trigger
-Bundle-Version: 1.0.1
+Bundle-Version: 1.0.2
 Bundle-ManifestVersion: 2
 Origin-Bundle-SymbolicName: Jenkinks_Pipeline_Trigger
 SAP-NodeType: IFLMAP
